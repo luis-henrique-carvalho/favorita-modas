@@ -1,5 +1,7 @@
 # PRD: Favorita Modas - Boutique Digital Premium
 
+> Para convenções de código, entidades, Server Actions e estrutura de pastas, consulte o [AGENTS.md](../AGENTS.md).
+
 ## 1. Visão Geral do Projeto
 
 A **Favorita Modas** é uma boutique de moda feminina com forte presença no Instagram e WhatsApp. O objetivo deste projeto é transformar a experiência de compra informal em uma jornada digital sofisticada, mobile-first, que combina a estética de uma boutique premium com a eficiência de um catálogo moderno.
@@ -88,6 +90,10 @@ A marca comunica luxo acessível, feminilidade e modernidade.
 - **Autenticação:** Better Auth
 - **Media:** Cloudinary (Hospedagem de imagens de alta performance)
 - **Deployment:** Vercel
+
+### 5.1 Estrutura de Pastas
+
+Estrutura detalhada, convenções de código e regras de desenvolvimento estão documentadas no [AGENTS.md](../AGENTS.md#estrutura-recomendada).
 
 ---
 

@@ -1,6 +1,16 @@
 ````md
 # AGENT.md
 
+## Documentação do Projeto
+
+| Documento                     | Descrição                                                           |
+| ----------------------------- | ------------------------------------------------------------------- |
+| [PRD.md](docs/PRD.md)         | Requisitos do produto, fluxo do usuário e especificações funcionais |
+| [ROADMAP.md](docs/ROADMAP.md) | Fases de desenvolvimento, tasks e progresso                         |
+| [DESIGN.md](docs/DESIGN.md)   | Sistema de design, paleta de cores e tipografia                     |
+
+---
+
 ## Contexto do Projeto
 
 Este projeto é um catálogo online para uma loja pequena, com foco em vendas e atendimento via WhatsApp.
