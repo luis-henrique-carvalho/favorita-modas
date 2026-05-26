@@ -1,5 +1,5 @@
 import type { category } from "@/server/db/schema/category";
-import type { product, productImage } from "@/server/db/schema/product";
+import type { product, productImage, productVariant } from "@/server/db/schema/product";
 
 export type PublicCategory = Pick<typeof category.$inferSelect, "id" | "name" | "slug">;
 
@@ -17,3 +17,10 @@ export type PublicProduct = Pick<typeof product.$inferSelect, "id" | "name" | "s
 export type FavoriteProduct = Pick<PublicProduct, "id" | "name" | "slug" | "price"> & {
   image?: string;
 };
+
+export type ProductVariant = Pick<
+  typeof productVariant.$inferSelect,
+  "id" | "size" | "color" | "stockQuantity" | "isAvailable"
+>;
+
+export type ProductDetail = PublicProduct & { variants?: ProductVariant[] };
