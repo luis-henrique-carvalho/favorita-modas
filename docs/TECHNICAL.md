@@ -421,14 +421,14 @@ src/
         user.ts
     auth/
       auth.ts
-  lib/
-    utils.ts
-    whatsapp.ts
-    cloudinary.ts
     validations/
       product-schema.ts
       lead-schema.ts
       category-schema.ts
+  lib/
+    utils.ts
+    whatsapp.ts
+    cloudinary.ts
   types/
     index.ts
 ```

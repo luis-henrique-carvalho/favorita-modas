@@ -152,14 +152,14 @@ src/
         user.ts
     auth/
       auth.ts
-  lib/
-    utils.ts
-    whatsapp.ts
-    cloudinary.ts
     validations/
       product-schema.ts
       lead-schema.ts
       category-schema.ts
+  lib/
+    utils.ts
+    whatsapp.ts
+    cloudinary.ts
   types/
     index.ts
 ```
@@ -169,7 +169,7 @@ src/
 - [x] Criar estrutura `/components/ui`, `/components/public`, `/components/admin`
 - [x] Criar estrutura `/server/actions/products`, `/categories`, `/leads`, `/uploads`
 - [x] Criar estrutura `/server/db/schema/`
-- [x] Criar estrutura `/lib/validations/`
+- [x] Criar estrutura `/server/validations/`
 - [x] Criar estrutura `/app/(public)`
 - [x] Criar estrutura `/app/admin`
 
