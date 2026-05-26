@@ -19,7 +19,11 @@ function readStoredFavorites() {
 }
 
 export function useInterestList() {
-  const [favorites, setFavorites] = React.useState<FavoriteProduct[]>(readStoredFavorites);
+  const [favorites, setFavorites] = React.useState<FavoriteProduct[]>([]);
+
+  React.useEffect(() => {
+    setFavorites(readStoredFavorites());
+  }, []);
 
   const saveFavorites = React.useCallback((newFavorites: FavoriteProduct[]) => {
     setFavorites(newFavorites);
