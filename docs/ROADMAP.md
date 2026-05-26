@@ -74,7 +74,7 @@ Criar toda a fundação técnica do sistema.
 
 ### Upload
 
-- [ ] cloudinary
+- [x] cloudinary
 
 ### Auth
 
@@ -166,12 +166,12 @@ src/
 
 ### Tasks
 
-- [ ] Criar estrutura `/components/ui`, `/components/public`, `/components/admin`
-- [ ] Criar estrutura `/server/actions/products`, `/categories`, `/leads`, `/uploads`
+- [x] Criar estrutura `/components/ui`, `/components/public`, `/components/admin`
+- [x] Criar estrutura `/server/actions/products`, `/categories`, `/leads`, `/uploads`
 - [x] Criar estrutura `/server/db/schema/`
-- [ ] Criar estrutura `/lib/validations/`
-- [ ] Criar estrutura `/app/(public)`
-- [ ] Criar estrutura `/app/admin`
+- [x] Criar estrutura `/lib/validations/`
+- [x] Criar estrutura `/app/(public)`
+- [x] Criar estrutura `/app/admin`
 
 ---
 
