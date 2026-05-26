@@ -74,8 +74,7 @@ Criar toda a fundação técnica do sistema.
 
 ### Upload
 
-- [x] cloudinary
-- [ ] react-dropzone
+- [ ] cloudinary
 
 ### Auth
 
@@ -361,7 +360,7 @@ Criar fluxo completo de upload.
 
 ## Tasks
 
-- [x] Configurar Cloudinary
+- [ ] Configurar Cloudinary
 - [ ] Criar upload helper
 - [ ] Criar remoção de imagens
 - [ ] Criar compressão
