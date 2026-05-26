@@ -1,6 +1,6 @@
 # PRD: Favorita Modas - Boutique Digital Premium
 
-> Para convenções de código, entidades, Server Actions e estrutura de pastas, consulte o [AGENTS.md](../AGENTS.md).
+> Para convenções de código, entidades, Server Actions e estrutura de pastas, consulte o [TECHNICAL.md](TECHNICAL.md).
 
 ## 1. Visão Geral do Projeto
 
@@ -93,7 +93,7 @@ A marca comunica luxo acessível, feminilidade e modernidade.
 
 ### 5.1 Estrutura de Pastas
 
-Estrutura detalhada, convenções de código e regras de desenvolvimento estão documentadas no [AGENTS.md](../AGENTS.md#estrutura-recomendada).
+Estrutura detalhada, convenções de código e regras de desenvolvimento estão documentadas no [TECHNICAL.md](TECHNICAL.md#estrutura-recomendada).
 
 ---
 

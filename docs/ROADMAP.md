@@ -1,6 +1,6 @@
 # ROADMAP.md
 
-> Guia de desenvolvimento técnico. Para convenções, entidades e regras do projeto, consulte o [AGENTS.md](../AGENTS.md).
+> Guia de desenvolvimento técnico. Para convenções, entidades e regras do projeto, consulte o [TECHNICAL.md](TECHNICAL.md).
 
 # Favorita Modas — Roadmap do Projeto
 
@@ -84,7 +84,7 @@ Criar toda a fundação técnica do sistema.
 
 ## 3. Estruturar pastas
 
-> Estrutura definida no [AGENTS.md](../AGENTS.md#estrutura-recomendada).
+> Estrutura definida no [TECHNICAL.md](TECHNICAL.md#estrutura-recomendada).
 
 ### Estrutura
 
