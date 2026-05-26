@@ -52,6 +52,10 @@ Não transforme o MVP em e-commerce completo. Evite checkout online, carrinho co
 - Finalize mudanças de código com a validação de qualidade definida em `docs/QUALITY.md`.
 - Priorize simplicidade, velocidade mobile e manutenção.
 - Após finalizar uma tarefa, caso seja necessário, atualize o Roadmap e o PRD para refletir mudanças de escopo ou detalhes técnicos.
+- IMPORTANTE - Sempre usar os components de UI do shadcn/ui para manter consistência visual e acelerar o desenvolvimento, evitando criar componentes customizados sem necessidade.
+- IMPORTANTE - Não permitir componentes com muitas linhas ou responsabilidades. Se um componente crescer demais, divida-o em subcomponentes menores e reutilizáveis.
+- IMPORTANTE - Não criar interfaces ou tipos TypeScript desnecessários. Use @schema do Drizzle para definir tipos de banco de dados e evite criar tipos adicionais a menos que sejam realmente necessários para a lógica de negócio.
+- Nomes de arquivos sempre em inglês, components mantendo o padrão do shadcn/ui.
 
 ## Regra Central de Conversão
 

@@ -32,14 +32,14 @@ describe("ProductCard Component", () => {
 
     expect(screen.getByRole("heading", { name: "Macacão Pantalona Elegance" })).toBeDefined();
     expect(screen.getByText(/189,90/)).toBeDefined();
-    expect(screen.getByText("Ver Detalhes")).toBeDefined();
+    expect(screen.getByText("Ver detalhes")).toBeDefined();
     expect(screen.getByText("Vestuário")).toBeDefined();
   });
 
   it("renders appropriate status badge for COMING_SOON status", () => {
     render(<ProductCard {...defaultProps} status="COMING_SOON" />);
 
-    expect(screen.getByText("Em Breve")).toBeDefined();
+    expect(screen.getByText("Em breve")).toBeDefined();
     expect(screen.queryByText("Esgotado")).toBeNull();
   });
 
@@ -47,6 +47,6 @@ describe("ProductCard Component", () => {
     render(<ProductCard {...defaultProps} status="UNAVAILABLE" />);
 
     expect(screen.getByText("Esgotado")).toBeDefined();
-    expect(screen.getByText("Lista de Espera")).toBeDefined();
+    expect(screen.getByText("Lista de espera")).toBeDefined();
   });
 });

@@ -2,13 +2,17 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { Heart } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/format";
+import { cn } from "@/lib/utils";
+import type { PublicProductImage } from "./home-types";
 
-interface ProductImage {
-  url: string;
-  alt?: string | null;
-}
+const PRODUCT_IMAGE_FALLBACK =
+  "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80";
 
 interface ProductCardProps {
   id: string;
@@ -16,9 +20,36 @@ interface ProductCardProps {
   slug: string;
   price: number | string;
   status: "AVAILABLE" | "UNAVAILABLE" | "COMING_SOON" | "PRE_ORDER";
-  images?: ProductImage[];
+  images?: PublicProductImage[];
   categoryName?: string;
   className?: string;
+  isFavorite?: boolean;
+  onToggleFavorite?: (event: React.MouseEvent) => void;
+}
+
+function ProductStatusBadge({ status }: { status: ProductCardProps["status"] }) {
+  switch (status) {
+    case "UNAVAILABLE":
+      return (
+        <Badge variant="destructive" className="absolute left-3 top-3 z-10 backdrop-blur-sm">
+          Esgotado
+        </Badge>
+      );
+    case "COMING_SOON":
+      return (
+        <Badge variant="secondary" className="absolute left-3 top-3 z-10 backdrop-blur-sm">
+          Em breve
+        </Badge>
+      );
+    case "PRE_ORDER":
+      return (
+        <Badge variant="outline" className="absolute left-3 top-3 z-10 bg-background/80">
+          Sob encomenda
+        </Badge>
+      );
+    default:
+      return null;
+  }
 }
 
 export function ProductCard({
@@ -29,102 +60,84 @@ export function ProductCard({
   images = [],
   categoryName,
   className,
+  isFavorite = false,
+  onToggleFavorite,
 }: ProductCardProps) {
-  // Use first image URL or a placeholder
-  const imageUrl = images?.[0]?.url || "/placeholder-product.jpg";
-  const imageAlt = images?.[0]?.alt || name;
-
-  // Format currency
-  const formattedPrice = React.useMemo(() => {
-    const numPrice = typeof price === "string" ? parseFloat(price) : price;
-    if (isNaN(numPrice)) return "R$ 0,00";
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(numPrice);
-  }, [price]);
-
-  // Determine badge styling based on status
-  const statusBadge = React.useMemo(() => {
-    switch (status) {
-      case "UNAVAILABLE":
-        return (
-          <Badge
-            variant="destructive"
-            className="absolute top-3 left-3 bg-destructive/90 text-destructive-foreground backdrop-blur-sm"
-          >
-            Esgotado
-          </Badge>
-        );
-      case "COMING_SOON":
-        return (
-          <Badge className="absolute top-3 left-3 bg-secondary-container/90 text-on-secondary-container backdrop-blur-sm">
-            Em Breve
-          </Badge>
-        );
-      case "PRE_ORDER":
-        return (
-          <Badge className="absolute top-3 left-3 bg-primary-container/90 text-on-primary-container backdrop-blur-sm">
-            Sob Encomenda
-          </Badge>
-        );
-      default:
-        return null;
-    }
-  }, [status]);
+  const imageUrl = images[0]?.url || PRODUCT_IMAGE_FALLBACK;
+  const imageAlt = images[0]?.alt || name;
 
   return (
-    <div
+    <Card
+      size="sm"
       className={cn(
-        "group/card flex flex-col h-full overflow-hidden rounded-2xl bg-card shadow-card hover:shadow-floating transition-all duration-300 hover-lift select-none border-0",
+        "h-full gap-0 rounded-2xl shadow-card transition-all duration-300 hover-lift",
         className,
       )}
     >
-      {/* Product Image Container */}
-      <Link
-        href={`/produtos/${slug}`}
-        className="relative block aspect-[3/4] overflow-hidden w-full bg-surface-container-low"
-      >
-        {statusBadge}
-        {categoryName && (
-          <span className="absolute bottom-3 left-3 z-10 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-semibold bg-white/70 backdrop-blur-xs text-on-surface">
-            {categoryName}
-          </span>
-        )}
-        <img
-          src={imageUrl}
-          alt={imageAlt}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.src =
-              "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80"; // Beautiful fallback fashion photo
-          }}
-        />
-      </Link>
+      <div className="relative overflow-hidden bg-surface-container-low">
+        <AspectRatio ratio={3 / 4}>
+          <ProductStatusBadge status={status} />
 
-      {/* Product Details */}
-      <div className="flex flex-col flex-1 p-4 gap-2">
-        <Link href={`/produtos/${slug}`} className="group/title">
-          <h3 className="font-heading text-lg font-medium text-foreground tracking-tight line-clamp-1 group-hover/title:text-primary transition-colors">
-            {name}
-          </h3>
-        </Link>
+          {onToggleFavorite && (
+            <Button
+              type="button"
+              onClick={onToggleFavorite}
+              size="icon-sm"
+              variant="outline"
+              className="absolute right-3 top-3 z-10 rounded-full bg-background/90 shadow-sm backdrop-blur-sm"
+              aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+            >
+              <Heart className={cn(isFavorite && "fill-primary text-primary")} />
+            </Button>
+          )}
 
-        <div className="flex items-baseline justify-between mt-auto">
-          <span className="font-sans font-semibold text-base text-secondary">{formattedPrice}</span>
-
-          <Link
-            href={`/produtos/${slug}`}
-            className="text-[12px] font-semibold text-primary/80 hover:text-primary transition-colors flex items-center gap-1 group/link"
-          >
-            <span>{status === "UNAVAILABLE" ? "Lista de Espera" : "Ver Detalhes"}</span>
-            <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-0.5">
-              &rarr;
-            </span>
+          <Link href={`/produtos/${slug}`} className="block h-full w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+              loading="lazy"
+              onError={(event) => {
+                if (event.currentTarget.src !== PRODUCT_IMAGE_FALLBACK) {
+                  event.currentTarget.src = PRODUCT_IMAGE_FALLBACK;
+                }
+              }}
+            />
           </Link>
-        </div>
+
+          {categoryName && (
+            <Badge
+              variant="secondary"
+              className="absolute bottom-3 left-3 z-10 bg-background/80 backdrop-blur-sm"
+            >
+              {categoryName}
+            </Badge>
+          )}
+        </AspectRatio>
       </div>
-    </div>
+
+      <CardContent className="flex flex-1 flex-col gap-2 pt-4">
+        <CardTitle>
+          <Link href={`/produtos/${slug}`} className="group/title">
+            <h3 className="line-clamp-1 font-heading text-lg font-medium tracking-normal text-foreground transition-colors group-hover/title:text-primary">
+              {name}
+            </h3>
+          </Link>
+        </CardTitle>
+      </CardContent>
+
+      <CardFooter className="justify-between gap-2 border-0 bg-transparent pt-0">
+        <span className="font-sans text-base font-semibold text-secondary">
+          {formatCurrency(price)}
+        </span>
+
+        <Button asChild variant="link" size="sm" className="h-auto px-0 text-xs font-semibold">
+          <Link href={`/produtos/${slug}`}>
+            {status === "UNAVAILABLE" ? "Lista de espera" : "Ver detalhes"}
+          </Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

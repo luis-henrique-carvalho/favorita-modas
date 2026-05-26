@@ -261,14 +261,14 @@ Criar toda experiência do cliente.
 
 ## Tasks
 
-- [ ] Criar navbar mobile-first
-- [ ] Criar hero moderno
-- [ ] Criar categorias
-- [ ] Criar destaque de produtos
-- [ ] Criar seção novidades
-- [ ] Criar CTA WhatsApp
-- [ ] Criar botão flutuante WhatsApp
-- [ ] Criar footer
+- [x] Criar navbar mobile-first
+- [x] Criar hero moderno
+- [x] Criar categorias
+- [x] Criar destaque de produtos
+- [x] Criar seção novidades
+- [x] Criar CTA WhatsApp
+- [x] Criar botão flutuante WhatsApp
+- [x] Criar footer
 
 ---
 

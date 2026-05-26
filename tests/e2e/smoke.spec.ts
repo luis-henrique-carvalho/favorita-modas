@@ -1,13 +1,12 @@
 import { test, expect } from "@playwright/test";
 
-test("should load the home page (Cloudinary Lab validation stack) and display correct title", async ({
-  page,
-}) => {
+test("should load the public catalog home and display the boutique hero", async ({ page }) => {
   await page.goto("/");
 
-  // Verify that the header contains 'Favorita Modas — Cloudinary Lab'
-  const header = page.locator("h1");
-  await expect(header).toContainText("Favorita Modas — Cloudinary Lab");
+  await expect(
+    page.getByRole("heading", { name: "A beleza de ser única em cada detalhe." }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Descobrir coleção" })).toBeVisible();
 });
 
 test("should navigate to the admin page correctly", async ({ page }) => {

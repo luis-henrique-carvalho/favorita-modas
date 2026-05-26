@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { generateWhatsAppLink } from "./whatsapp";
+import {
+  generateFavoritesWhatsAppLink,
+  generateWhatsAppLink,
+  generateWhatsAppMessageLink,
+} from "./whatsapp";
 
 describe("WhatsApp Link Generator", () => {
   it("should generate a correct WhatsApp link with only product name", () => {
@@ -35,5 +39,30 @@ describe("WhatsApp Link Generator", () => {
     expect(textPart).toContain("Tamanho: M");
     expect(textPart).toContain("Quantidade: 2");
     expect(textPart).toContain("Meu nome é Ana Maria.");
+  });
+
+  it("should encode a generic store message", () => {
+    const link = generateWhatsAppMessageLink({
+      phone: "+55 (75) 99999-9999",
+      message: "Olá! Quero conhecer a nova coleção.",
+    });
+
+    expect(link).toContain("https://wa.me/5575999999999?text=");
+    expect(decodeURIComponent(link.split("?text=")[1])).toBe("Olá! Quero conhecer a nova coleção.");
+  });
+
+  it("should generate a unified interest list message", () => {
+    const link = generateFavoritesWhatsAppLink({
+      phone: "5575999999999",
+      items: [
+        { name: "Vestido Seda Violeta", price: 489.9 },
+        { name: "Conjunto Linen Rosé", price: "359.00" },
+      ],
+    });
+
+    const textPart = decodeURIComponent(link.split("?text=")[1]);
+    expect(textPart).toContain("1. Vestido Seda Violeta (R$ 489,90)");
+    expect(textPart).toContain("2. Conjunto Linen Rosé (R$ 359,00)");
+    expect(textPart).toContain("disponibilidade de tamanhos e cores");
   });
 });
