@@ -22,6 +22,7 @@ export function useInterestList() {
   const [favorites, setFavorites] = React.useState<FavoriteProduct[]>([]);
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFavorites(readStoredFavorites());
   }, []);
 

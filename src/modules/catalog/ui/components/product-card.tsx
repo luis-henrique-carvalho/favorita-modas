@@ -25,31 +25,80 @@ interface ProductCardProps {
   className?: string;
   isFavorite?: boolean;
   onToggleFavorite?: (event: React.MouseEvent) => void;
+  sizes?: string[];
+  totalStock?: number;
 }
 
-function ProductStatusBadge({ status }: { status: ProductCardProps["status"] }) {
-  switch (status) {
-    case "UNAVAILABLE":
-      return (
-        <Badge variant="destructive" className="absolute left-3 top-3 z-10 backdrop-blur-sm">
-          Esgotado
-        </Badge>
-      );
-    case "COMING_SOON":
-      return (
-        <Badge variant="secondary" className="absolute left-3 top-3 z-10 backdrop-blur-sm">
-          Em breve
-        </Badge>
-      );
-    case "PRE_ORDER":
-      return (
-        <Badge variant="outline" className="absolute left-3 top-3 z-10 bg-background/80">
-          Sob encomenda
-        </Badge>
-      );
-    default:
-      return null;
+function ProductStatusBadge({
+  status,
+  totalStock,
+  categoryName,
+}: {
+  status: ProductCardProps["status"];
+  totalStock?: number;
+  categoryName?: string;
+}) {
+  // If status is UNAVAILABLE or totalStock is 0, show Esgotado
+  if (status === "UNAVAILABLE" || (totalStock !== undefined && totalStock === 0)) {
+    return (
+      <Badge
+        variant="destructive"
+        className="absolute left-3 top-3 z-10 font-semibold tracking-wide shadow-sm"
+      >
+        Esgotado
+      </Badge>
+    );
   }
+
+  // If COMING_SOON, show Em breve
+  if (status === "COMING_SOON") {
+    return (
+      <Badge
+        variant="secondary"
+        className="absolute left-3 top-3 z-10 font-semibold tracking-wide shadow-sm"
+      >
+        Em breve
+      </Badge>
+    );
+  }
+
+  // If PRE_ORDER, show Sob encomenda
+  if (status === "PRE_ORDER") {
+    return (
+      <Badge
+        variant="outline"
+        className="absolute left-3 top-3 z-10 bg-background/90 text-primary border-outline-variant font-semibold tracking-wide shadow-sm"
+      >
+        Sob encomenda
+      </Badge>
+    );
+  }
+
+  // If AVAILABLE and totalStock is low (between 1 and 2), show Últimas peças
+  if (status === "AVAILABLE" && totalStock !== undefined && totalStock > 0 && totalStock < 3) {
+    return (
+      <Badge className="absolute left-3 top-3 z-10 bg-error-container text-on-error-container hover:bg-error-container border-none font-semibold tracking-wide shadow-sm">
+        Últimas peças
+      </Badge>
+    );
+  }
+
+  // If AVAILABLE and we want to show a "Novo" or "Premium" badge
+  if (status === "AVAILABLE") {
+    if (
+      categoryName?.toLowerCase() === "novidades" ||
+      categoryName?.toLowerCase() === "premium" ||
+      categoryName?.toLowerCase() === "novo"
+    ) {
+      return (
+        <Badge className="absolute left-3 top-3 z-10 bg-secondary-container text-on-secondary-container hover:bg-secondary-container border-none font-semibold tracking-wide shadow-sm">
+          Novo
+        </Badge>
+      );
+    }
+  }
+
+  return null;
 }
 
 export function ProductCard({
@@ -62,6 +111,8 @@ export function ProductCard({
   className,
   isFavorite = false,
   onToggleFavorite,
+  sizes = [],
+  totalStock,
 }: ProductCardProps) {
   const imageUrl = images[0]?.url || PRODUCT_IMAGE_FALLBACK;
   const imageAlt = images[0]?.alt || name;
@@ -70,13 +121,13 @@ export function ProductCard({
     <Card
       size="sm"
       className={cn(
-        "h-full gap-0 rounded-2xl shadow-card transition-all duration-300 hover-lift",
+        "h-full gap-0 rounded-2xl border-none shadow-[0px_4px_20px_rgba(127,75,108,0.04)] transition-all duration-500 hover:shadow-[0px_8px_30px_rgba(127,75,108,0.08)] hover:-translate-y-1 bg-surface-container-lowest",
         className,
       )}
     >
-      <div className="relative overflow-hidden bg-surface-container-low">
+      <div className="relative overflow-hidden rounded-t-2xl bg-surface-container-low">
         <AspectRatio ratio={3 / 4}>
-          <ProductStatusBadge status={status} />
+          <ProductStatusBadge status={status} totalStock={totalStock} categoryName={categoryName} />
 
           {onToggleFavorite && (
             <Button
@@ -84,10 +135,15 @@ export function ProductCard({
               onClick={onToggleFavorite}
               size="icon-sm"
               variant="outline"
-              className="absolute right-3 top-3 z-10 rounded-full bg-background/90 shadow-sm backdrop-blur-sm"
+              className="absolute right-3 top-3 z-10 rounded-full bg-background/90 shadow-sm backdrop-blur-sm transition-transform active:scale-90 hover:bg-background"
               aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
             >
-              <Heart className={cn(isFavorite && "fill-primary text-primary")} />
+              <Heart
+                className={cn(
+                  "h-4 w-4 transition-colors",
+                  isFavorite && "fill-primary text-primary",
+                )}
+              />
             </Button>
           )}
 
@@ -96,7 +152,7 @@ export function ProductCard({
             <img
               src={imageUrl}
               alt={imageAlt}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
               loading="lazy"
               onError={(event) => {
                 if (event.currentTarget.src !== PRODUCT_IMAGE_FALLBACK) {
@@ -109,7 +165,7 @@ export function ProductCard({
           {categoryName && (
             <Badge
               variant="secondary"
-              className="absolute bottom-3 left-3 z-10 bg-background/80 backdrop-blur-sm"
+              className="absolute bottom-3 left-3 z-10 bg-background/95 hover:bg-background/95 backdrop-blur-sm border-none text-xs text-on-surface-variant font-medium rounded-full"
             >
               {categoryName}
             </Badge>
@@ -117,7 +173,7 @@ export function ProductCard({
         </AspectRatio>
       </div>
 
-      <CardContent className="flex flex-1 flex-col gap-2 pt-4">
+      <CardContent className="flex flex-1 flex-col gap-2 pt-4 px-4 pb-2">
         <CardTitle>
           <Link href={`/produtos/${slug}`} className="group/title">
             <h3 className="line-clamp-1 font-heading text-lg font-medium tracking-normal text-foreground transition-colors group-hover/title:text-primary">
@@ -127,14 +183,27 @@ export function ProductCard({
         </CardTitle>
       </CardContent>
 
-      <CardFooter className="justify-between gap-2 border-0 bg-transparent pt-0">
-        <span className="font-sans text-base font-semibold text-secondary">
-          {formatCurrency(price)}
-        </span>
+      <CardFooter className="flex-col items-start gap-2 border-0 bg-transparent pt-0 pb-4 px-4">
+        <div className="flex w-full items-center justify-between">
+          <span className="font-sans text-base font-semibold text-secondary">
+            {formatCurrency(price)}
+          </span>
+          {sizes.length > 0 ? (
+            <span className="text-xs text-outline font-medium tracking-tight bg-surface-container-low/60 px-2 py-0.5 rounded">
+              {sizes.join(", ")}
+            </span>
+          ) : (
+            <span className="text-xs text-outline font-medium tracking-tight bg-surface-container-low/60 px-2 py-0.5 rounded">
+              Único
+            </span>
+          )}
+        </div>
 
         <Button asChild variant="link" size="sm" className="h-auto px-0 text-xs font-semibold">
           <Link href={`/produtos/${slug}`}>
-            {status === "UNAVAILABLE" ? "Lista de espera" : "Ver detalhes"}
+            {status === "UNAVAILABLE" || (totalStock !== undefined && totalStock === 0)
+              ? "Lista de espera"
+              : "Ver detalhes"}
           </Link>
         </Button>
       </CardFooter>

@@ -49,4 +49,22 @@ describe("ProductCard Component", () => {
     expect(screen.getByText("Esgotado")).toBeDefined();
     expect(screen.getByText("Lista de espera")).toBeDefined();
   });
+
+  it("renders custom sizes list on the product card", () => {
+    render(<ProductCard {...defaultProps} sizes={["P", "M", "G"]} />);
+
+    expect(screen.getByText("P, M, G")).toBeDefined();
+  });
+
+  it("renders Últimas peças badge when stock is low", () => {
+    render(<ProductCard {...defaultProps} status="AVAILABLE" totalStock={2} />);
+
+    expect(screen.getByText("Últimas peças")).toBeDefined();
+  });
+
+  it("renders Novo badge when product is available and has category Novidades", () => {
+    render(<ProductCard {...defaultProps} status="AVAILABLE" categoryName="Novidades" />);
+
+    expect(screen.getByText("Novo")).toBeDefined();
+  });
 });

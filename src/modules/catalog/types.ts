@@ -10,6 +10,8 @@ export type PublicProduct = Pick<typeof product.$inferSelect, "id" | "name" | "s
   description?: typeof product.$inferSelect.description;
   categoryName?: string;
   images?: PublicProductImage[];
+  sizes?: string[];
+  totalStock?: number;
 };
 
 export type FavoriteProduct = Pick<PublicProduct, "id" | "name" | "slug" | "price"> & {

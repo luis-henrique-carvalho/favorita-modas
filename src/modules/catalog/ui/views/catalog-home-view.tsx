@@ -29,6 +29,8 @@ export function CatalogHomeView({
   const [isBagOpen, setIsBagOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = React.useState("Tudo");
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [selectedSize, setSelectedSize] = React.useState("Todos");
+  const [onlyAvailable, setOnlyAvailable] = React.useState(false);
   const { favorites, removeFavorite, toggleFavorite } = useInterestList();
 
   const handleToggleFavorite = React.useCallback(
@@ -45,24 +47,40 @@ export function CatalogHomeView({
   const clearFilters = React.useCallback(() => {
     setSelectedCategory("Tudo");
     setSearchQuery("");
+    setSelectedSize("Todos");
+    setOnlyAvailable(false);
   }, []);
 
   const filteredProducts = React.useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
 
     return initialProducts.filter((product) => {
+      // 1. Category Filter
       const matchesCategory =
         selectedCategory === "Tudo" ||
         product.categoryName?.toLowerCase() === selectedCategory.toLowerCase();
 
+      // 2. Search Filter
       const matchesSearch =
         normalizedSearch.length === 0 ||
         product.name.toLowerCase().includes(normalizedSearch) ||
         (product.description?.toLowerCase().includes(normalizedSearch) ?? false);
 
-      return matchesCategory && matchesSearch;
+      // 3. Size Filter
+      const matchesSize =
+        selectedSize === "Todos" ||
+        (product.sizes !== undefined &&
+          product.sizes.some((size) => size.toLowerCase() === selectedSize.toLowerCase()));
+
+      // 4. Availability Filter
+      const matchesAvailability =
+        !onlyAvailable ||
+        (product.status !== "UNAVAILABLE" &&
+          (product.totalStock === undefined || product.totalStock > 0));
+
+      return matchesCategory && matchesSearch && matchesSize && matchesAvailability;
     });
-  }, [initialProducts, selectedCategory, searchQuery]);
+  }, [initialProducts, selectedCategory, searchQuery, selectedSize, onlyAvailable]);
 
   const novidadesProducts = React.useMemo(() => initialProducts.slice(0, 3), [initialProducts]);
 
@@ -94,6 +112,10 @@ export function CatalogHomeView({
             categories={initialCategories}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
+            selectedSize={selectedSize}
+            onSelectSize={setSelectedSize}
+            onlyAvailable={onlyAvailable}
+            onToggleOnlyAvailable={setOnlyAvailable}
           />
         </div>
 
@@ -108,6 +130,9 @@ export function CatalogHomeView({
           favorites={favorites}
           selectedCategory={selectedCategory}
           searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          selectedSize={selectedSize}
+          onlyAvailable={onlyAvailable}
           onClearFilters={clearFilters}
           onToggleFavorite={handleToggleFavorite}
         />

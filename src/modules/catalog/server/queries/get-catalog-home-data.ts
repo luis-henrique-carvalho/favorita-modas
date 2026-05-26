@@ -12,10 +12,11 @@ export async function getCatalogHomeData() {
   }
 
   try {
-    const [dbCategories, dbProducts, dbImages] = await Promise.all([
+    const [dbCategories, dbProducts, dbImages, dbVariants] = await Promise.all([
       db.select().from(schema.category),
       db.select().from(schema.product),
       db.select().from(schema.productImage),
+      db.select().from(schema.productVariant),
     ]);
 
     if (dbCategories.length === 0 || dbProducts.length === 0) {
@@ -39,6 +40,13 @@ export async function getCatalogHomeData() {
         (categoryItem) => categoryItem.id === item.categoryId,
       );
 
+      const productVariants = dbVariants.filter(
+        (variant) => variant.productId === item.id && variant.isAvailable,
+      );
+
+      const sizes = Array.from(new Set(productVariants.map((v) => v.size)));
+      const totalStock = productVariants.reduce((sum, v) => sum + v.stockQuantity, 0);
+
       return {
         id: item.id,
         name: item.name,
@@ -47,6 +55,8 @@ export async function getCatalogHomeData() {
         status: item.status,
         description: item.description,
         categoryName: productCategory?.name || "Vestidos",
+        sizes: sizes.length > 0 ? sizes : undefined,
+        totalStock,
         images:
           images.length > 0
             ? images.map((image) => ({
