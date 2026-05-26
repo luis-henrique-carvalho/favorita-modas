@@ -127,12 +127,11 @@
 }
 
 :root {
-  --font-body: var(--font-be-vietnam-pro, "Be Vietnam Pro"), ui-sans-serif,
-    system-ui, sans-serif;
-  --font-display: var(--font-playfair-display, "Playfair Display"), Georgia,
-    serif;
-  --font-code: var(--font-geist-mono, ui-monospace), SFMono-Regular, Menlo,
-    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-body: var(--font-be-vietnam-pro, "Be Vietnam Pro"), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair-display, "Playfair Display"), Georgia, serif;
+  --font-code:
+    var(--font-geist-mono, ui-monospace), SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 
   --surface: #fcf9f8;
   --surface-dim: #dcd9d8;
@@ -229,12 +228,9 @@
   --stack-lg: 3rem;
   --section-padding: 5rem;
 
-  --elevation-soft: 0 10px 30px
-    color-mix(in oklab, var(--secondary) 5%, transparent);
-  --elevation-card: 0 16px 50px
-    color-mix(in oklab, var(--primary) 5%, transparent);
-  --elevation-floating: 0 24px 70px
-    color-mix(in oklab, var(--secondary) 6%, transparent);
+  --elevation-soft: 0 10px 30px color-mix(in oklab, var(--secondary) 5%, transparent);
+  --elevation-card: 0 16px 50px color-mix(in oklab, var(--primary) 5%, transparent);
+  --elevation-floating: 0 24px 70px color-mix(in oklab, var(--secondary) 6%, transparent);
 }
 
 .dark {
@@ -305,12 +301,9 @@
   --sidebar-border: var(--outline-variant);
   --sidebar-ring: var(--primary);
 
-  --elevation-soft: 0 10px 30px
-    color-mix(in oklab, var(--primary) 10%, transparent);
-  --elevation-card: 0 16px 50px
-    color-mix(in oklab, var(--primary) 9%, transparent);
-  --elevation-floating: 0 24px 70px
-    color-mix(in oklab, var(--primary) 12%, transparent);
+  --elevation-soft: 0 10px 30px color-mix(in oklab, var(--primary) 10%, transparent);
+  --elevation-card: 0 16px 50px color-mix(in oklab, var(--primary) 9%, transparent);
+  --elevation-floating: 0 24px 70px color-mix(in oklab, var(--primary) 12%, transparent);
 }
 
 @layer base {
@@ -391,11 +384,7 @@
 
 [data-slot="button"][data-variant="outline"] {
   border-color: color-mix(in oklab, var(--primary) 38%, transparent);
-  background: color-mix(
-    in oklab,
-    var(--surface-container-lowest) 82%,
-    transparent
-  );
+  background: color-mix(in oklab, var(--surface-container-lowest) 82%, transparent);
   color: var(--primary);
 }
 
@@ -419,8 +408,7 @@
 [data-slot="select-trigger"]:focus-visible,
 [data-slot="native-select"]:focus-visible {
   border-color: var(--secondary);
-  box-shadow: 0 0 0 3px
-    color-mix(in oklab, var(--secondary) 18%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--secondary) 18%, transparent);
 }
 
 [data-slot="card"] {

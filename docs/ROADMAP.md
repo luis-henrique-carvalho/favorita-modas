@@ -175,6 +175,18 @@ src/
 
 ---
 
+## 4. Configurar Testes
+
+### Tasks
+
+- [x] Instalar dependências de testes (Vitest e Playwright)
+- [x] Configurar Vitest (vitest.config.ts e vitest.setup.ts)
+- [x] Configurar Playwright (playwright.config.ts)
+- [x] Escrever testes de fumaça (smoke tests) para validar a configuração
+- [x] Configurar scripts de teste no package.json
+
+---
+
 # FASE 2 — Design System
 
 ## Objetivo

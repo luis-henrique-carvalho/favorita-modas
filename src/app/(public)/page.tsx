@@ -15,6 +15,10 @@ interface UploadResult {
   timestamp: string;
 }
 
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
 // In-memory state for verification purposes
 let lastTestResult: TestResult | null = null;
 let lastUploadResult: UploadResult | null = null;
@@ -43,15 +47,16 @@ export default async function TestCloudinaryPage() {
       const result = await cloudinary.api.ping();
       lastTestResult = {
         success: result.status === "ok",
-        message: result.status === "ok" 
-          ? "Conexão estabelecida com sucesso! O SDK do Cloudinary está autenticado." 
-          : `Resposta inesperada: ${JSON.stringify(result)}`,
+        message:
+          result.status === "ok"
+            ? "Conexão estabelecida com sucesso! O SDK do Cloudinary está autenticado."
+            : `Resposta inesperada: ${JSON.stringify(result)}`,
         timestamp: new Date().toLocaleTimeString("pt-BR"),
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       lastTestResult = {
         success: false,
-        message: `Falha na conexão: ${error.message || error}`,
+        message: `Falha na conexão: ${getErrorMessage(error)}`,
         timestamp: new Date().toLocaleTimeString("pt-BR"),
       };
     }
@@ -103,10 +108,10 @@ export default async function TestCloudinaryPage() {
         message: "Imagem carregada com sucesso para o Cloudinary!",
         timestamp: new Date().toLocaleTimeString("pt-BR"),
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       lastUploadResult = {
         success: false,
-        message: `Falha no upload da imagem: ${error.message || error}`,
+        message: `Falha no upload da imagem: ${getErrorMessage(error)}`,
         timestamp: new Date().toLocaleTimeString("pt-BR"),
       };
     }
@@ -137,19 +142,27 @@ export default async function TestCloudinaryPage() {
           {/* Card 1: Connection Status & Diagnostic */}
           <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-5 flex flex-col justify-between">
             <div>
-              <h2 className="text-base font-semibold text-neutral-200 mb-4">1. Status de Conexão</h2>
+              <h2 className="text-base font-semibold text-neutral-200 mb-4">
+                1. Status de Conexão
+              </h2>
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-neutral-500">CLOUD_NAME</span>
-                  <span className={cloudName ? "text-emerald-400" : "text-amber-400"}>{cloudName ? "Preenchido" : "Ausente"}</span>
+                  <span className={cloudName ? "text-emerald-400" : "text-amber-400"}>
+                    {cloudName ? "Preenchido" : "Ausente"}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-neutral-500">API_KEY</span>
-                  <span className={apiKey ? "text-emerald-400" : "text-amber-400"}>{apiKey ? "Preenchido" : "Ausente"}</span>
+                  <span className={apiKey ? "text-emerald-400" : "text-amber-400"}>
+                    {apiKey ? "Preenchido" : "Ausente"}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-neutral-500">API_SECRET</span>
-                  <span className={apiSecret ? "text-emerald-400" : "text-amber-400"}>{apiSecret ? "Preenchido" : "Ausente"}</span>
+                  <span className={apiSecret ? "text-emerald-400" : "text-amber-400"}>
+                    {apiSecret ? "Preenchido" : "Ausente"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -170,7 +183,9 @@ export default async function TestCloudinaryPage() {
               </form>
 
               {lastTestResult && (
-                <div className={`mt-3 p-3 rounded-lg border text-xs leading-relaxed ${lastTestResult.success ? "bg-emerald-500/5 border-emerald-500/10 text-emerald-400" : "bg-red-500/5 border-red-500/10 text-red-400"}`}>
+                <div
+                  className={`mt-3 p-3 rounded-lg border text-xs leading-relaxed ${lastTestResult.success ? "bg-emerald-500/5 border-emerald-500/10 text-emerald-400" : "bg-red-500/5 border-red-500/10 text-red-400"}`}
+                >
                   <div className="flex justify-between font-bold mb-1">
                     <span>{lastTestResult.success ? "ONLINE" : "FALHA"}</span>
                     <span className="opacity-60">{lastTestResult.timestamp}</span>
@@ -184,10 +199,12 @@ export default async function TestCloudinaryPage() {
           {/* Card 2: Interactive Image Upload Form */}
           <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-5 flex flex-col justify-between">
             <h2 className="text-base font-semibold text-neutral-200 mb-3">2. Teste de Upload</h2>
-            
+
             <form action={handleUploadImage} className="space-y-4">
               <div>
-                <label className="block text-xs text-neutral-500 mb-1.5">Escolha uma Imagem (PNG/JPG)</label>
+                <label className="block text-xs text-neutral-500 mb-1.5">
+                  Escolha uma Imagem (PNG/JPG)
+                </label>
                 <input
                   type="file"
                   name="image"
@@ -219,17 +236,23 @@ export default async function TestCloudinaryPage() {
 
         {/* Upload Result Section */}
         {lastUploadResult && (
-          <div className={`p-6 rounded-2xl border-2 mb-6 ${lastUploadResult.success ? "bg-emerald-950/20 border-emerald-500/20" : "bg-red-950/20 border-red-500/20"}`}>
+          <div
+            className={`p-6 rounded-2xl border-2 mb-6 ${lastUploadResult.success ? "bg-emerald-950/20 border-emerald-500/20" : "bg-red-950/20 border-red-500/20"}`}
+          >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <span className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${lastUploadResult.success ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
+                <span
+                  className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${lastUploadResult.success ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}
+                >
                   {lastUploadResult.success ? "Upload Concluído" : "Erro no Upload"}
                 </span>
                 <p className="text-xs text-neutral-500 mt-1">{lastUploadResult.timestamp}</p>
               </div>
             </div>
 
-            <p className={`text-sm ${lastUploadResult.success ? "text-emerald-300" : "text-red-300"} mb-4`}>
+            <p
+              className={`text-sm ${lastUploadResult.success ? "text-emerald-300" : "text-red-300"} mb-4`}
+            >
               {lastUploadResult.message}
             </p>
 
@@ -237,13 +260,17 @@ export default async function TestCloudinaryPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-neutral-950 border border-neutral-800 rounded-xl p-4">
                 <div className="flex flex-col justify-between space-y-2">
                   <div className="space-y-1">
-                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest block">Public ID</span>
+                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest block">
+                      Public ID
+                    </span>
                     <code className="text-xs font-mono bg-neutral-900 border border-neutral-800 rounded px-1.5 py-0.5 text-rose-400 block truncate">
                       {lastUploadResult.publicId}
                     </code>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest block">URL Segura</span>
+                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest block">
+                      URL Segura
+                    </span>
                     <a
                       href={lastUploadResult.url}
                       target="_blank"
@@ -270,7 +297,12 @@ export default async function TestCloudinaryPage() {
 
         {!isConfigured && (
           <div className="p-4 bg-amber-500/5 border border-amber-500/20 text-amber-300 rounded-xl text-sm leading-relaxed text-center sm:text-left">
-            <span className="font-bold">Aviso:</span> O formulário de upload está desabilitado porque as variáveis de ambiente do Cloudinary no seu arquivo <code className="bg-amber-500/10 text-amber-400 px-1 py-0.5 rounded font-mono text-xs">.env</code> não estão preenchidas. Preencha-as para habilitar e testar uploads reais!
+            <span className="font-bold">Aviso:</span> O formulário de upload está desabilitado
+            porque as variáveis de ambiente do Cloudinary no seu arquivo{" "}
+            <code className="bg-amber-500/10 text-amber-400 px-1 py-0.5 rounded font-mono text-xs">
+              .env
+            </code>{" "}
+            não estão preenchidas. Preencha-as para habilitar e testar uploads reais!
           </div>
         )}
       </div>

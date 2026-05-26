@@ -2,7 +2,7 @@ import { pgTable, text, timestamp, boolean, integer, numeric } from "drizzle-orm
 import { category } from "./category";
 
 export const productStatusEnum = ["AVAILABLE", "UNAVAILABLE", "COMING_SOON", "PRE_ORDER"] as const;
-export type ProductStatus = typeof productStatusEnum[number];
+export type ProductStatus = (typeof productStatusEnum)[number];
 
 export const product = pgTable("product", {
   id: text("id")
@@ -12,10 +12,7 @@ export const product = pgTable("product", {
   slug: text("slug").notNull().unique(),
   description: text("description"),
   price: numeric("price", { precision: 10, scale: 2 }).notNull(),
-  status: text("status")
-    .$type<ProductStatus>()
-    .default("AVAILABLE")
-    .notNull(),
+  status: text("status").$type<ProductStatus>().default("AVAILABLE").notNull(),
   isAvailable: boolean("is_available").default(true).notNull(),
   categoryId: text("category_id")
     .notNull()

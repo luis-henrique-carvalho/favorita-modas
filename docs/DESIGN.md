@@ -1,96 +1,96 @@
 ---
 name: Premium Boutique Identity
 colors:
-  surface: '#fcf9f8'
-  surface-dim: '#dcd9d8'
-  surface-bright: '#fcf9f8'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f6f3f2'
-  surface-container: '#f0edec'
-  surface-container-high: '#eae7e7'
-  surface-container-highest: '#e5e2e1'
-  on-surface: '#1b1c1b'
-  on-surface-variant: '#4f4349'
-  inverse-surface: '#303030'
-  inverse-on-surface: '#f3f0ef'
-  outline: '#81737a'
-  outline-variant: '#d3c2c9'
-  surface-tint: '#824d6f'
-  primary: '#7f4b6c'
-  on-primary: '#ffffff'
-  primary-container: '#9b6386'
-  on-primary-container: '#fffbff'
-  inverse-primary: '#f5b3da'
-  secondary: '#804f6b'
-  on-secondary: '#ffffff'
-  secondary-container: '#fec0e0'
-  on-secondary-container: '#7b4b66'
-  tertiary: '#6c565c'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#866e75'
-  on-tertiary-container: '#fffbff'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#ffd8ec'
-  primary-fixed-dim: '#f5b3da'
-  on-primary-fixed: '#350a29'
-  on-primary-fixed-variant: '#673656'
-  secondary-fixed: '#ffd8eb'
-  secondary-fixed-dim: '#f2b5d5'
-  on-secondary-fixed: '#330d26'
-  on-secondary-fixed-variant: '#653853'
-  tertiary-fixed: '#f9dbe2'
-  tertiary-fixed-dim: '#dcbfc6'
-  on-tertiary-fixed: '#27171c'
-  on-tertiary-fixed-variant: '#564147'
-  background: '#fcf9f8'
-  on-background: '#1b1c1b'
-  surface-variant: '#e5e2e1'
+  surface: "#fcf9f8"
+  surface-dim: "#dcd9d8"
+  surface-bright: "#fcf9f8"
+  surface-container-lowest: "#ffffff"
+  surface-container-low: "#f6f3f2"
+  surface-container: "#f0edec"
+  surface-container-high: "#eae7e7"
+  surface-container-highest: "#e5e2e1"
+  on-surface: "#1b1c1b"
+  on-surface-variant: "#4f4349"
+  inverse-surface: "#303030"
+  inverse-on-surface: "#f3f0ef"
+  outline: "#81737a"
+  outline-variant: "#d3c2c9"
+  surface-tint: "#824d6f"
+  primary: "#7f4b6c"
+  on-primary: "#ffffff"
+  primary-container: "#9b6386"
+  on-primary-container: "#fffbff"
+  inverse-primary: "#f5b3da"
+  secondary: "#804f6b"
+  on-secondary: "#ffffff"
+  secondary-container: "#fec0e0"
+  on-secondary-container: "#7b4b66"
+  tertiary: "#6c565c"
+  on-tertiary: "#ffffff"
+  tertiary-container: "#866e75"
+  on-tertiary-container: "#fffbff"
+  error: "#ba1a1a"
+  on-error: "#ffffff"
+  error-container: "#ffdad6"
+  on-error-container: "#93000a"
+  primary-fixed: "#ffd8ec"
+  primary-fixed-dim: "#f5b3da"
+  on-primary-fixed: "#350a29"
+  on-primary-fixed-variant: "#673656"
+  secondary-fixed: "#ffd8eb"
+  secondary-fixed-dim: "#f2b5d5"
+  on-secondary-fixed: "#330d26"
+  on-secondary-fixed-variant: "#653853"
+  tertiary-fixed: "#f9dbe2"
+  tertiary-fixed-dim: "#dcbfc6"
+  on-tertiary-fixed: "#27171c"
+  on-tertiary-fixed-variant: "#564147"
+  background: "#fcf9f8"
+  on-background: "#1b1c1b"
+  surface-variant: "#e5e2e1"
 typography:
   display-lg:
     fontFamily: Playfair Display
     fontSize: 48px
-    fontWeight: '700'
-    lineHeight: '1.1'
+    fontWeight: "700"
+    lineHeight: "1.1"
     letterSpacing: -0.02em
   headline-lg:
     fontFamily: Playfair Display
     fontSize: 32px
-    fontWeight: '600'
-    lineHeight: '1.2'
+    fontWeight: "600"
+    lineHeight: "1.2"
   headline-lg-mobile:
     fontFamily: Playfair Display
     fontSize: 28px
-    fontWeight: '600'
-    lineHeight: '1.2'
+    fontWeight: "600"
+    lineHeight: "1.2"
   headline-md:
     fontFamily: Playfair Display
     fontSize: 24px
-    fontWeight: '500'
-    lineHeight: '1.3'
+    fontWeight: "500"
+    lineHeight: "1.3"
   body-lg:
     fontFamily: Be Vietnam Pro
     fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.6'
+    fontWeight: "400"
+    lineHeight: "1.6"
   body-md:
     fontFamily: Be Vietnam Pro
     fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.6'
+    fontWeight: "400"
+    lineHeight: "1.6"
   label-md:
     fontFamily: Be Vietnam Pro
     fontSize: 14px
-    fontWeight: '500'
-    lineHeight: '1.4'
+    fontWeight: "500"
+    lineHeight: "1.4"
     letterSpacing: 0.05em
   label-sm:
     fontFamily: Be Vietnam Pro
     fontSize: 12px
-    fontWeight: '600'
-    lineHeight: '1.4'
+    fontWeight: "600"
+    lineHeight: "1.4"
 rounded:
   sm: 0.25rem
   DEFAULT: 0.5rem
@@ -131,7 +131,7 @@ As manchetes em **Playfair Display** trazem autoridade editorial e um toque de "
 
 ## Layout & Spacing
 
-O sistema utiliza uma **Grade Fluida** baseada em um modelo de 12 colunas para desktop e 2 colunas para mobile (listagem de produtos). 
+O sistema utiliza uma **Grade Fluida** baseada em um modelo de 12 colunas para desktop e 2 colunas para mobile (listagem de produtos).
 
 O ritmo espacial é generoso. O distanciamento entre seções deve ser amplo (`section-padding`) para evitar a percepção de uma loja "comum" e densa. No mobile, as margens laterais são reduzidas ligeiramente para priorizar a visualização das imagens dos produtos, mas mantendo o respiro vertical entre elementos de texto.
 

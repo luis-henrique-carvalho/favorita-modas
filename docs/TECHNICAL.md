@@ -304,6 +304,8 @@ STORE_WHATSAPP_NUMBER="5575999999999"
 
 ## Testes
 
+Para fluxo TDD, gates de lint/formatação/tipos e validação final, consulte [QUALITY.md](QUALITY.md).
+
 Use uma estratégia pragmática, proporcional ao MVP e focada nos fluxos que geram venda.
 
 ### Unitários - Vitest

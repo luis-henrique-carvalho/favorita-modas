@@ -7,7 +7,7 @@ export default function AdminPage() {
       <div className="w-full max-w-xl bg-neutral-900 border border-neutral-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden my-8">
         {/* Decorative lights */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
-        
+
         {/* Header */}
         <div className="relative mb-8 text-center sm:text-left border-b border-neutral-800 pb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -17,7 +17,8 @@ export default function AdminPage() {
             Favorita Modas — Admin
           </h1>
           <p className="text-neutral-400 text-sm mt-1">
-            Esta área será protegida por Better Auth. Aqui você poderá gerenciar produtos, categorias e visualizar leads de interesse.
+            Esta área será protegida por Better Auth. Aqui você poderá gerenciar produtos,
+            categorias e visualizar leads de interesse.
           </p>
         </div>
 
@@ -29,7 +30,9 @@ export default function AdminPage() {
             </div>
             <div>
               <h3 className="text-sm font-semibold text-neutral-200">Gerenciador de Peças</h3>
-              <p className="text-xs text-neutral-400 mt-0.5">CRUD completo de produtos com variantes de cor, tamanho e controle de estoque.</p>
+              <p className="text-xs text-neutral-400 mt-0.5">
+                CRUD completo de produtos com variantes de cor, tamanho e controle de estoque.
+              </p>
             </div>
           </div>
 
@@ -39,7 +42,10 @@ export default function AdminPage() {
             </div>
             <div>
               <h3 className="text-sm font-semibold text-neutral-200">Lead e Conversão</h3>
-              <p className="text-xs text-neutral-400 mt-0.5">Visualize a lista de interesses de peças sem estoque e inicie contato via WhatsApp com um clique.</p>
+              <p className="text-xs text-neutral-400 mt-0.5">
+                Visualize a lista de interesses de peças sem estoque e inicie contato via WhatsApp
+                com um clique.
+              </p>
             </div>
           </div>
         </div>

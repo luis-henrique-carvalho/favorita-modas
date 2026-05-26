@@ -7,12 +7,13 @@ Detalhes de produto, design, arquitetura e roadmap ficam em `docs/` e devem ser 
 
 Use `rg` para localizar seções e abra apenas o documento necessário:
 
-| Quando precisar de... | Consulte |
-| --- | --- |
-| Objetivo do produto, público, fluxos e requisitos funcionais | [docs/PRD.md](docs/PRD.md) |
-| Identidade visual, tokens, tipografia, cores e componentes | [docs/DESIGN.md](docs/DESIGN.md) |
-| Fases, progresso, checklist e próximas tasks | [docs/ROADMAP.md](docs/ROADMAP.md) |
+| Quando precisar de...                                            | Consulte                               |
+| ---------------------------------------------------------------- | -------------------------------------- |
+| Objetivo do produto, público, fluxos e requisitos funcionais     | [docs/PRD.md](docs/PRD.md)             |
+| Identidade visual, tokens, tipografia, cores e componentes       | [docs/DESIGN.md](docs/DESIGN.md)       |
+| Fases, progresso, checklist e próximas tasks                     | [docs/ROADMAP.md](docs/ROADMAP.md)     |
 | Stack, entidades, rotas, Server Actions, testes, env e estrutura | [docs/TECHNICAL.md](docs/TECHNICAL.md) |
+| Qualidade, TDD, lint, formatação e validação final               | [docs/QUALITY.md](docs/QUALITY.md)     |
 
 Antes de criar algo novo, confira a implementação existente em `src/`.
 
@@ -48,6 +49,7 @@ Não transforme o MVP em e-commerce completo. Evite checkout online, carrinho co
 - Use Drizzle; não adicione Prisma.
 - Proteja rotas e ações de `/admin` no servidor.
 - Nunca exponha segredos ou variáveis privadas no client.
+- Finalize mudanças de código com a validação de qualidade definida em `docs/QUALITY.md`.
 - Priorize simplicidade, velocidade mobile e manutenção.
 
 ## Regra Central de Conversão

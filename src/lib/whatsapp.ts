@@ -25,21 +25,21 @@ export function generateWhatsAppLink({
   // Build the message sections
   let text = "Olá! Tenho interesse nesta peça:\n\n";
   text += `Produto: ${productName}\n`;
-  
+
   if (color) {
     text += `Cor: ${color}\n`;
   }
-  
+
   if (size) {
     text += `Tamanho: ${size}\n`;
   }
-  
+
   text += `Quantidade: ${quantity}\n\n`;
 
   if (customerName) {
     text += `Meu nome é ${customerName}.\n`;
   }
-  
+
   text += "Gostaria de saber mais sobre pagamento e entrega.";
 
   // Encode the message
