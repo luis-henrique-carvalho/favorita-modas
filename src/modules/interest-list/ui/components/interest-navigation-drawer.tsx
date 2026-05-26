@@ -32,10 +32,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { formatCurrency } from "@/lib/format";
-import { generateFavoritesWhatsAppLink } from "@/lib/whatsapp";
-import type { FavoriteProduct } from "./home-types";
+import { generateFavoritesWhatsAppLink } from "@/modules/whatsapp/lib/whatsapp";
+import type { FavoriteProduct } from "@/modules/catalog/types";
 
-interface NavigationDrawerProps {
+interface InterestNavigationDrawerProps {
   isMenuOpen: boolean;
   isBagOpen: boolean;
   onCloseMenu: () => void;
@@ -52,7 +52,7 @@ const menuItems = [
   { href: "#contato", label: "Contato", icon: MessageCircle },
 ];
 
-export function NavigationDrawer({
+export function InterestNavigationDrawer({
   isMenuOpen,
   isBagOpen,
   onCloseMenu,
@@ -60,7 +60,7 @@ export function NavigationDrawer({
   favorites,
   onRemoveFavorite,
   whatsappPhone,
-}: NavigationDrawerProps) {
+}: InterestNavigationDrawerProps) {
   const whatsappLink = React.useMemo(
     () => generateFavoritesWhatsAppLink({ phone: whatsappPhone, items: favorites }),
     [favorites, whatsappPhone],

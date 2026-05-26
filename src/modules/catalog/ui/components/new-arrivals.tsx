@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { ProductCard } from "./product-card";
-import type { FavoriteProduct, PublicProduct } from "./home-types";
+import type { FavoriteProduct, PublicProduct } from "../../types";
 
 interface HomeNewArrivalsProps {
   products: PublicProduct[];

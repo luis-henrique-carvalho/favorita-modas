@@ -93,7 +93,7 @@ A marca comunica luxo acessível, feminilidade e modernidade.
 
 ### 5.1 Estrutura de Pastas
 
-Estrutura detalhada, convenções de código e regras de desenvolvimento estão documentadas no [TECHNICAL.md](TECHNICAL.md#estrutura-recomendada).
+Estrutura modular, convenções de código e regras de desenvolvimento estão documentadas no [TECHNICAL.md](TECHNICAL.md#estrutura-recomendada). A experiência pública deve ser organizada por módulos de domínio como catálogo, lista de interesse, storefront e WhatsApp.
 
 ---
 

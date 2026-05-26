@@ -4,7 +4,7 @@ import * as React from "react";
 import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppLink, generateWhatsAppMessageLink } from "@/lib/whatsapp";
+import { generateWhatsAppLink, generateWhatsAppMessageLink } from "../../lib/whatsapp";
 
 interface WhatsAppButtonProps extends React.ComponentProps<"a"> {
   variant?: "inline" | "floating";

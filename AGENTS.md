@@ -56,6 +56,8 @@ Não transforme o MVP em e-commerce completo. Evite checkout online, carrinho co
 - IMPORTANTE - Não permitir componentes com muitas linhas ou responsabilidades. Se um componente crescer demais, divida-o em subcomponentes menores e reutilizáveis.
 - IMPORTANTE - Não criar interfaces ou tipos TypeScript desnecessários. Use @schema do Drizzle para definir tipos de banco de dados e evite criar tipos adicionais a menos que sejam realmente necessários para a lógica de negócio.
 - Nomes de arquivos sempre em inglês, components mantendo o padrão do shadcn/ui.
+- Organize funcionalidades por módulos em `src/modules/<domínio>`. Use `components/ui` apenas para shadcn/ui, mantenha rotas em `app/` finas e evite recriar `components/public`.
+- Em `src/modules/*/server`, separe cada action/query em arquivo próprio dentro de `actions/` ou `queries/`. Não crie arquivos agregadores como `actions.ts` com várias mutações.
 
 ## Regra Central de Conversão
 

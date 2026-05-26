@@ -2,19 +2,19 @@
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import type { PublicCategory } from "./home-types";
+import type { PublicCategory } from "../../types";
 
-interface HomeCategoriesProps {
+interface CategoryFilterProps {
   categories: PublicCategory[];
   selectedCategory: string;
   onSelectCategory: (category: string) => void;
 }
 
-export function HomeCategories({
+export function CategoryFilter({
   categories,
   selectedCategory,
   onSelectCategory,
-}: HomeCategoriesProps) {
+}: CategoryFilterProps) {
   return (
     <nav className="container-boutique" aria-label="Categorias do catálogo">
       <ScrollArea className="w-full whitespace-nowrap">

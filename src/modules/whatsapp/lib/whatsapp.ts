@@ -1,4 +1,4 @@
-import { formatCurrency } from "./format";
+import { formatCurrency } from "@/lib/format";
 
 interface WhatsAppLinkParams {
   phone: string;

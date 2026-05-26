@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppMessageLink } from "@/lib/whatsapp";
+import { generateWhatsAppMessageLink } from "@/modules/whatsapp/lib/whatsapp";
 
-interface HomeFooterProps {
+interface StorefrontFooterProps {
   whatsappPhone: string;
 }
 
-export function HomeFooter({ whatsappPhone }: HomeFooterProps) {
+export function StorefrontFooter({ whatsappPhone }: StorefrontFooterProps) {
   const whatsappUrl = generateWhatsAppMessageLink({
     phone: whatsappPhone,
     message: "Olá! Gostaria de falar com a Favorita Modas.",

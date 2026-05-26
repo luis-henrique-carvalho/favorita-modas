@@ -1,31 +1,35 @@
 "use client";
 
 import * as React from "react";
-import { NavigationDrawer } from "./navigation-drawer";
-import { HomeHeader } from "./home-header";
-import { HomeHero } from "./home-hero";
-import { HomeCategories } from "./home-categories";
-import { HomeNewArrivals } from "./home-new-arrivals";
-import { HomeManifesto } from "./home-manifesto";
-import { HomeFooter } from "./home-footer";
-import { HomeBottomNav } from "./home-bottom-nav";
-import { HomeProductGrid } from "./home-product-grid";
-import { WhatsAppButton } from "./whatsapp-button";
-import { useFavorites } from "./use-favorites";
-import type { PublicCategory, PublicProduct } from "./home-types";
+import { BottomInterestNav } from "@/modules/interest-list/ui/components/bottom-interest-nav";
+import { InterestNavigationDrawer } from "@/modules/interest-list/ui/components/interest-navigation-drawer";
+import { useInterestList } from "@/modules/interest-list/hooks/use-interest-list";
+import { StorefrontFooter } from "@/modules/storefront/ui/components/storefront-footer";
+import { StorefrontHeader } from "@/modules/storefront/ui/components/storefront-header";
+import { StorefrontHero } from "@/modules/storefront/ui/components/storefront-hero";
+import { StorefrontManifesto } from "@/modules/storefront/ui/components/storefront-manifesto";
+import { WhatsAppButton } from "@/modules/whatsapp/ui/components/whatsapp-button";
+import { CategoryFilter } from "../components/category-filter";
+import { HomeNewArrivals } from "../components/new-arrivals";
+import { ProductGrid } from "../components/product-grid";
+import type { PublicCategory, PublicProduct } from "../../types";
 
-interface HomeClientProps {
+interface CatalogHomeViewProps {
   initialCategories: PublicCategory[];
   initialProducts: PublicProduct[];
   whatsappPhone: string;
 }
 
-export function HomeClient({ initialCategories, initialProducts, whatsappPhone }: HomeClientProps) {
+export function CatalogHomeView({
+  initialCategories,
+  initialProducts,
+  whatsappPhone,
+}: CatalogHomeViewProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isBagOpen, setIsBagOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = React.useState("Tudo");
   const [searchQuery, setSearchQuery] = React.useState("");
-  const { favorites, removeFavorite, toggleFavorite } = useFavorites();
+  const { favorites, removeFavorite, toggleFavorite } = useInterestList();
 
   const handleToggleFavorite = React.useCallback(
     (product: PublicProduct) => {
@@ -64,7 +68,7 @@ export function HomeClient({ initialCategories, initialProducts, whatsappPhone }
 
   return (
     <div className="relative min-h-screen bg-background pb-16 font-sans text-on-background md:pb-0">
-      <NavigationDrawer
+      <InterestNavigationDrawer
         isMenuOpen={isMenuOpen}
         isBagOpen={isBagOpen}
         onCloseMenu={() => setIsMenuOpen(false)}
@@ -74,7 +78,7 @@ export function HomeClient({ initialCategories, initialProducts, whatsappPhone }
         whatsappPhone={whatsappPhone}
       />
 
-      <HomeHeader
+      <StorefrontHeader
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenBag={() => setIsBagOpen(true)}
         favoritesCount={favorites.length}
@@ -83,10 +87,10 @@ export function HomeClient({ initialCategories, initialProducts, whatsappPhone }
       />
 
       <main className="pb-20 pt-20 md:pb-12">
-        <HomeHero onOpenBag={() => setIsBagOpen(true)} />
+        <StorefrontHero onOpenBag={() => setIsBagOpen(true)} />
 
         <div className="mt-4">
-          <HomeCategories
+          <CategoryFilter
             categories={initialCategories}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
@@ -99,7 +103,7 @@ export function HomeClient({ initialCategories, initialProducts, whatsappPhone }
           onToggleFavorite={handleToggleFavorite}
         />
 
-        <HomeProductGrid
+        <ProductGrid
           products={filteredProducts}
           favorites={favorites}
           selectedCategory={selectedCategory}
@@ -108,12 +112,12 @@ export function HomeClient({ initialCategories, initialProducts, whatsappPhone }
           onToggleFavorite={handleToggleFavorite}
         />
 
-        <HomeManifesto />
+        <StorefrontManifesto />
       </main>
 
-      <HomeFooter whatsappPhone={whatsappPhone} />
+      <StorefrontFooter whatsappPhone={whatsappPhone} />
 
-      <HomeBottomNav onOpenBag={() => setIsBagOpen(true)} favoritesCount={favorites.length} />
+      <BottomInterestNav onOpenBag={() => setIsBagOpen(true)} favoritesCount={favorites.length} />
 
       <WhatsAppButton
         variant="floating"

@@ -387,15 +387,58 @@ src/
           route.ts
   components/
     ui/
-    public/
-      product-card.tsx
-      product-grid.tsx
-      whatsapp-button.tsx
-      lead-form.tsx
+  modules/
+    catalog/
+      constants.ts
+      types.ts
+      server/
+        queries/
+          get-catalog-home-data.ts
+        actions/
+          create-product-action.ts
+          update-product-action.ts
+          delete-product-action.ts
+      ui/
+        components/
+          category-filter.tsx
+          new-arrivals.tsx
+          product-card.tsx
+          product-grid.tsx
+        views/
+          catalog-home-view.tsx
+    interest-list/
+      hooks/
+        use-interest-list.ts
+      ui/
+        components/
+          bottom-interest-nav.tsx
+          interest-navigation-drawer.tsx
+    storefront/
+      ui/
+        components/
+          storefront-header.tsx
+          storefront-hero.tsx
+          storefront-manifesto.tsx
+          storefront-footer.tsx
+    whatsapp/
+      lib/
+        whatsapp.ts
+      ui/
+        components/
+          whatsapp-button.tsx
     admin/
-      product-form.tsx
-      category-form.tsx
-      lead-table.tsx
+      server/
+        queries/
+          get-admin-dashboard-data.ts
+        actions/
+          update-lead-status-action.ts
+      ui/
+        components/
+          product-form.tsx
+          category-form.tsx
+          lead-table.tsx
+        views/
+          admin-dashboard-view.tsx
   server/
     actions/
       products/
@@ -427,11 +470,23 @@ src/
       category-schema.ts
   lib/
     utils.ts
-    whatsapp.ts
+    format.ts
     cloudinary.ts
-  types/
-    index.ts
 ```
+
+### Convenções de Módulos
+
+- `app/` deve ser fino: rotas carregam dados, leem variáveis públicas necessárias e renderizam uma view de módulo.
+- `components/ui/` é exclusivo para shadcn/ui. Não coloque componentes de domínio nessa pasta.
+- `modules/catalog` concentra catálogo público: produtos, categorias, dados de fallback, queries e views de listagem.
+- `modules/interest-list` concentra a lista de interesse local e os drawers/navs relacionados. Não trate essa lista como carrinho ou checkout.
+- `modules/storefront` concentra a casca editorial da loja: header, hero, manifesto e footer.
+- `modules/whatsapp` concentra geração de links `wa.me` e CTAs de WhatsApp.
+- Dentro de `modules/*/server`, cada query ou action deve morar em arquivo próprio, por exemplo `server/queries/get-catalog-home-data.ts` ou `server/actions/create-product-action.ts`. Evite arquivos agregadores como `actions.ts` com várias mutações.
+- `server/` mantém infraestrutura compartilhada de banco, auth, validações e Server Actions cross-module.
+- `lib/` deve ficar pequeno e transversal, por exemplo `utils.ts`, `format.ts` e integrações globais como Cloudinary.
+- Testes devem ficar próximos do módulo testado quando forem unitários/de componente.
+- Arquivos e exports devem usar nomes em inglês; textos exibidos para clientes permanecem em português.
 
 ## Segurança
 

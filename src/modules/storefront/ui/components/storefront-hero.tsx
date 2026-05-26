@@ -6,11 +6,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-interface HomeHeroProps {
+interface StorefrontHeroProps {
   onOpenBag: () => void;
 }
 
-export function HomeHero({ onOpenBag }: HomeHeroProps) {
+export function StorefrontHero({ onOpenBag }: StorefrontHeroProps) {
   return (
     <section className="bg-background py-6">
       <div className="container-boutique grid grid-cols-1 items-center gap-8 md:grid-cols-2">

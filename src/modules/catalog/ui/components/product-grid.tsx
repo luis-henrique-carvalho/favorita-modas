@@ -12,9 +12,9 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { ProductCard } from "./product-card";
-import type { FavoriteProduct, PublicProduct } from "./home-types";
+import type { FavoriteProduct, PublicProduct } from "../../types";
 
-interface HomeProductGridProps {
+interface ProductGridProps {
   products: PublicProduct[];
   favorites: FavoriteProduct[];
   selectedCategory: string;
@@ -23,14 +23,14 @@ interface HomeProductGridProps {
   onToggleFavorite: (product: PublicProduct) => void;
 }
 
-export function HomeProductGrid({
+export function ProductGrid({
   products,
   favorites,
   selectedCategory,
   searchQuery,
   onClearFilters,
   onToggleFavorite,
-}: HomeProductGridProps) {
+}: ProductGridProps) {
   return (
     <section
       className="border-y border-outline-variant/20 bg-surface-container-lowest/40 py-8"

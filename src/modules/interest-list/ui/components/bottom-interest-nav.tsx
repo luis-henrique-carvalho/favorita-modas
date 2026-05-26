@@ -5,12 +5,12 @@ import { Home, Info, ShoppingBag, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-interface HomeBottomNavProps {
+interface BottomInterestNavProps {
   onOpenBag: () => void;
   favoritesCount: number;
 }
 
-export function HomeBottomNav({ onOpenBag, favoritesCount }: HomeBottomNavProps) {
+export function BottomInterestNav({ onOpenBag, favoritesCount }: BottomInterestNavProps) {
   return (
     <nav className="fixed bottom-0 z-50 flex h-16 w-full items-center justify-around border-t border-outline-variant/30 bg-background/90 px-4 backdrop-blur-md md:hidden">
       <Button asChild variant="ghost" className="h-auto flex-col gap-1 rounded-lg text-primary">

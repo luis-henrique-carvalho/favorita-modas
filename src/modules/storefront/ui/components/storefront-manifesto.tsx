@@ -3,7 +3,7 @@
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-export function HomeManifesto() {
+export function StorefrontManifesto() {
   return (
     <section className="bg-surface-container-low py-12" id="sobre">
       <div className="container-boutique flex max-w-xl flex-col items-center gap-5 text-center">

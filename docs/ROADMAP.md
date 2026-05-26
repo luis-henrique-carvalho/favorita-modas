@@ -118,15 +118,58 @@ src/
           route.ts
   components/
     ui/
-    public/
-      product-card.tsx
-      product-grid.tsx
-      whatsapp-button.tsx
-      lead-form.tsx
+  modules/
+    catalog/
+      constants.ts
+      types.ts
+      server/
+        queries/
+          get-catalog-home-data.ts
+        actions/
+          create-product-action.ts
+          update-product-action.ts
+          delete-product-action.ts
+      ui/
+        components/
+          category-filter.tsx
+          new-arrivals.tsx
+          product-card.tsx
+          product-grid.tsx
+        views/
+          catalog-home-view.tsx
+    interest-list/
+      hooks/
+        use-interest-list.ts
+      ui/
+        components/
+          bottom-interest-nav.tsx
+          interest-navigation-drawer.tsx
+    storefront/
+      ui/
+        components/
+          storefront-header.tsx
+          storefront-hero.tsx
+          storefront-manifesto.tsx
+          storefront-footer.tsx
+    whatsapp/
+      lib/
+        whatsapp.ts
+      ui/
+        components/
+          whatsapp-button.tsx
     admin/
-      product-form.tsx
-      category-form.tsx
-      lead-table.tsx
+      server/
+        queries/
+          get-admin-dashboard-data.ts
+        actions/
+          update-lead-status-action.ts
+      ui/
+        components/
+          product-form.tsx
+          category-form.tsx
+          lead-table.tsx
+        views/
+          admin-dashboard-view.tsx
   server/
     actions/
       products/
@@ -158,15 +201,15 @@ src/
       category-schema.ts
   lib/
     utils.ts
-    whatsapp.ts
+    format.ts
     cloudinary.ts
-  types/
-    index.ts
 ```
 
 ### Tasks
 
-- [x] Criar estrutura `/components/ui`, `/components/public`, `/components/admin`
+- [x] Criar estrutura `/components/ui`
+- [x] Criar estrutura modular `/modules/catalog`, `/interest-list`, `/storefront`, `/whatsapp`
+- [x] Separar `modules/*/server` em arquivos específicos por action/query
 - [x] Criar estrutura `/server/actions/products`, `/categories`, `/leads`, `/uploads`
 - [x] Criar estrutura `/server/db/schema/`
 - [x] Criar estrutura `/server/validations/`

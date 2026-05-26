@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
 
-interface HomeHeaderProps {
+interface StorefrontHeaderProps {
   onOpenMenu: () => void;
   onOpenBag: () => void;
   favoritesCount: number;
@@ -16,13 +16,13 @@ interface HomeHeaderProps {
   onSearchChange: (query: string) => void;
 }
 
-export function HomeHeader({
+export function StorefrontHeader({
   onOpenMenu,
   onOpenBag,
   favoritesCount,
   searchQuery,
   onSearchChange,
-}: HomeHeaderProps) {
+}: StorefrontHeaderProps) {
   const [showSearchInput, setShowSearchInput] = React.useState(false);
 
   return (

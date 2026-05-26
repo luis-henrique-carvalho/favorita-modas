@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import type { FavoriteProduct, PublicProduct } from "./home-types";
+import type { FavoriteProduct, PublicProduct } from "@/modules/catalog/types";
 
 const FAVORITES_STORAGE_KEY = "favorita_favorites";
 
@@ -18,7 +18,7 @@ function readStoredFavorites() {
   }
 }
 
-export function useFavorites() {
+export function useInterestList() {
   const [favorites, setFavorites] = React.useState<FavoriteProduct[]>(readStoredFavorites);
 
   const saveFavorites = React.useCallback((newFavorites: FavoriteProduct[]) => {
