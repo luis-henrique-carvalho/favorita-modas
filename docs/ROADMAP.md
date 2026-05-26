@@ -44,10 +44,10 @@ Criar toda a fundação técnica do sistema.
 ### Tasks
 
 - [x] Criar projeto com App Router
-- [ ] Configurar TypeScript
-- [ ] Configurar ESLint
-- [ ] Configurar Tailwind
-- [ ] Configurar alias `@/*`
+- [x] Configurar TypeScript
+- [x] Configurar ESLint
+- [x] Configurar Tailwind
+- [x] Configurar alias `@/*`
 
 ---
 
@@ -55,31 +55,31 @@ Criar toda a fundação técnica do sistema.
 
 ### UI
 
-- [ ] shadcn/ui
-- [ ] lucide-react
-- [ ] sonner
-- [ ] next-themes
+- [x] shadcn/ui
+- [x] lucide-react
+- [x] sonner
+- [x] next-themes
 
 ### Backend
 
-- [ ] drizzle-orm
-- [ ] postgres
-- [ ] drizzle-kit
-- [ ] zod
+- [x] drizzle-orm
+- [x] postgres
+- [x] drizzle-kit
+- [x] zod
 
 ### Forms
 
-- [ ] react-hook-form
-- [ ] @hookform/resolvers
+- [x] react-hook-form
+- [x] @hookform/resolvers
 
 ### Upload
 
-- [ ] cloudinary
+- [x] cloudinary
 - [ ] react-dropzone
 
 ### Auth
 
-- [ ] better-auth
+- [x] better-auth
 
 ---
 
@@ -169,7 +169,7 @@ src/
 
 - [ ] Criar estrutura `/components/ui`, `/components/public`, `/components/admin`
 - [ ] Criar estrutura `/server/actions/products`, `/categories`, `/leads`, `/uploads`
-- [ ] Criar estrutura `/server/db/schema/`
+- [x] Criar estrutura `/server/db/schema/`
 - [ ] Criar estrutura `/lib/validations/`
 - [ ] Criar estrutura `/app/(public)`
 - [ ] Criar estrutura `/app/admin`
@@ -311,9 +311,9 @@ Modelar estrutura principal da aplicação.
 
 ### Tasks
 
-- [ ] Criar banco local
-- [ ] Configurar `.env`
-- [ ] Configurar conexão
+- [x] Criar banco local
+- [x] Configurar `.env`
+- [x] Configurar conexão
 
 ---
 
@@ -321,10 +321,10 @@ Modelar estrutura principal da aplicação.
 
 ### Tasks
 
-- [ ] Criar schema
-- [ ] Configurar migrations
-- [ ] Configurar drizzle.config.ts
-- [ ] Rodar primeira migration
+- [x] Criar schema
+- [x] Configurar migrations
+- [x] Configurar drizzle.config.ts
+- [x] Rodar primeira migration
 
 ---
 
@@ -332,12 +332,12 @@ Modelar estrutura principal da aplicação.
 
 ### Tasks
 
-- [ ] Product
-- [ ] ProductImage
-- [ ] ProductVariant
-- [ ] Category
-- [ ] Lead
-- [ ] User
+- [x] Product
+- [x] ProductImage
+- [x] ProductVariant
+- [x] Category
+- [x] Lead
+- [x] User
 
 ---
 
@@ -361,7 +361,7 @@ Criar fluxo completo de upload.
 
 ## Tasks
 
-- [ ] Configurar Cloudinary
+- [x] Configurar Cloudinary
 - [ ] Criar upload helper
 - [ ] Criar remoção de imagens
 - [ ] Criar compressão
@@ -429,7 +429,7 @@ Criar autenticação do admin.
 
 ## Tasks
 
-- [ ] Configurar Better Auth
+- [x] Configurar Better Auth
 - [ ] Criar login admin
 - [ ] Criar middleware
 - [ ] Proteger rotas admin
