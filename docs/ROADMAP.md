@@ -199,11 +199,11 @@ Criar identidade visual consistente da marca.
 
 ### Tasks
 
-- [ ] Adicionar paleta Favorita Modas
-- [ ] Configurar tokens semânticos
-- [ ] Configurar sombras
-- [ ] Configurar border radius
-- [ ] Configurar spacing scale
+- [x] Adicionar paleta Favorita Modas
+- [x] Configurar tokens semânticos
+- [x] Configurar sombras
+- [x] Configurar border radius
+- [x] Configurar spacing scale
 
 ---
 
@@ -211,11 +211,11 @@ Criar identidade visual consistente da marca.
 
 ### Tasks
 
-- [ ] Instalar Playfair Display
-- [ ] Instalar Be Vietnam Pro
-- [ ] Configurar typography scale
-- [ ] Configurar headings
-- [ ] Configurar body text
+- [x] Instalar Playfair Display
+- [x] Instalar Be Vietnam Pro
+- [x] Configurar typography scale
+- [x] Configurar headings
+- [x] Configurar body text
 
 ---
 
@@ -223,11 +223,11 @@ Criar identidade visual consistente da marca.
 
 ### Tasks
 
-- [ ] Definir cores principais
-- [ ] Definir cores secundárias
-- [ ] Definir estados
-- [ ] Definir gradients
-- [ ] Definir glassmorphism leve
+- [x] Definir cores principais
+- [x] Definir cores secundárias
+- [x] Definir estados
+- [x] Definir gradients
+- [x] Definir glassmorphism leve
 
 ---
 
@@ -235,17 +235,17 @@ Criar identidade visual consistente da marca.
 
 ### Tasks
 
-- [ ] Button
-- [ ] Product Card
-- [ ] Badge
-- [ ] Input
-- [ ] Select
-- [ ] Dialog
-- [ ] Drawer
-- [ ] Sheet
-- [ ] WhatsApp Button
-- [ ] Skeleton
-- [ ] Toast
+- [x] Button
+- [x] Product Card
+- [x] Badge
+- [x] Input
+- [x] Select
+- [x] Dialog
+- [x] Drawer
+- [x] Sheet
+- [x] WhatsApp Button
+- [x] Skeleton
+- [x] Toast
 
 ---
 

@@ -51,6 +51,7 @@ Não transforme o MVP em e-commerce completo. Evite checkout online, carrinho co
 - Nunca exponha segredos ou variáveis privadas no client.
 - Finalize mudanças de código com a validação de qualidade definida em `docs/QUALITY.md`.
 - Priorize simplicidade, velocidade mobile e manutenção.
+- Após finalizar uma tarefa, caso seja necessário, atualize o Roadmap e o PRD para refletir mudanças de escopo ou detalhes técnicos.
 
 ## Regra Central de Conversão
 

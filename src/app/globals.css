@@ -82,7 +82,7 @@
   --color-card: var(--card);
   --text-display-lg: 3rem;
   --text-display-lg--line-height: 1.1;
-  --text-display-lg--letter-spacing: 0;
+  --text-display-lg--letter-spacing: -0.02em;
   --text-display-lg--font-weight: 700;
   --text-headline-lg: 2rem;
   --text-headline-lg--line-height: 1.2;
@@ -109,7 +109,7 @@
   --text-label-sm--font-weight: 600;
   --radius-sm: var(--shape-sm);
   --radius-md: var(--shape-default);
-  --radius-lg: var(--shape-default);
+  --radius-lg: var(--shape-md);
   --radius-xl: var(--shape-lg);
   --radius-2xl: var(--shape-xl);
   --radius-3xl: var(--shape-xl);
@@ -447,4 +447,35 @@
   .container-boutique {
     width: min(100% - (var(--gutter) * 2), var(--container-max));
   }
+}
+
+/* Boutique Design System Utilities */
+.bg-glass {
+  background: color-mix(in oklab, var(--surface-container-lowest) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--outline-variant) 30%, transparent);
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+}
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Micro-interactions */
+.hover-lift {
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elevation-floating);
 }
